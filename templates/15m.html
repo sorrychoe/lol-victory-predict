@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리그 오브 레전드 승률 예측</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+        #prediction-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>리그 오브 레전드 승률 예측</h1>
+    </header>
+
+    <div id="prediction-form">
+        <h2>게임 정보 입력</h2>
+        <form id="game-info-form">
+            <label for="blue-kills">블루팀 킬 수:</label>
+            <input type="number" id="blue-kills" name="blue-kills" required><br>
+
+            <label for="red-kills">레드팀 킬 수:</label>
+            <input type="number" id="red-kills" name="red-kills" required><br>
+
+            <label for="player-tier">플레이한 티어:</label>
+            <input type="text" id="player-tier" name="player-tier" required><br>
+
+            <label for="blue-tower-destroyed">블루팀이 파괴한 타워 갯수:</label>
+            <input type="number" id="blue-tower-destroyed" name="blue-tower-destroyed" required><br>
+
+            <label for="red-tower-destroyed">레드팀이 파괴한 타워 갯수:</label>
+            <input type="number" id="red-tower-destroyed" name="red-tower-destroyed" required><br>
+
+            <label for="blue-inhibitor-destroyed">블루팀이 파괴한 억제기 갯수:</label>
+            <input type="number" id="blue-inhibitor-destroyed" name="blue-inhibitor-destroyed" required><br>
+
+            <label for="red-inhibitor-destroyed">레드팀이 파괴한 억제기 갯수:</label>
+            <input type="number" id="red-inhibitor-destroyed" name="red-inhibitor-destroyed" required><br>
+
+            <label for="monster-type">자신의 팀이 먹은 몬스터 종류:</label>
+            <select id="monster-type" name="monster-type" required>
+                <option value="wind">바람</option>
+                <option value="fire">불</option>
+                <option value="earth">땅</option>
+                <option value="ocean">바다</option>
+                <option value="arcane">마법공학</option>
+                <option value="chemistry">화학공학</option>
+                <option value="elder">장로</option>
+            </select><br>
+
+            <button type="button" class="navyBtn" onClick="location.href='predict'">승률 예측</button>
+        </form>
+    </div>
+</body>
+</html>
