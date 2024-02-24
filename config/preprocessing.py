@@ -27,3 +27,17 @@ def tier_encoding(df):
         df.loc[df['tier'] == tier_list[i] ,'tier'] = i
         
     return df
+
+def blue_red_encoding(form):
+    if form == 'red':
+        return 0
+    else:
+        return 1
+    
+def tier_value(form):
+    tier_dict = {'bronze': 0,'silver': 1,'gold':2,'platinum':3,'diamond':4}
+    if form in tier_dict:
+        return tier_dict[form]
+    else:
+        return -1
+    
