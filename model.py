@@ -12,7 +12,7 @@ def clf_model_15m():
     data = load_15m_data()
     df = spread_monster(data)
 
-    real_df = df.drop(["matchId", "blue_win"],axis=1)
+    real_df = df.drop(["matchId", "blue_win"], axis=1)
     scaler = StandardScaler()
     scaler.fit(real_df)
 
@@ -20,10 +20,8 @@ def clf_model_15m():
 
     y = df['blue_win'].to_numpy()
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=100)
-
     model = LogisticRegression()
-    model.fit(X_train, y_train)
+    model.fit(X, y)
     joblib.dump(model, './model/model1.pkl')
     
     
@@ -41,10 +39,8 @@ def clf_model_full():
 
     y = df['blue_win'].to_numpy()
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=100)
-
     model = LogisticRegression()
-    model.fit(X_train, y_train)
+    model.fit(X, y)
     joblib.dump(model, './model/model2.pkl')
     
     
