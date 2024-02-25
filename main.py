@@ -46,20 +46,20 @@ def surrender_predict():
     data = {'blue_kill': [bk],'red_kill': [rk],'blue_tower': [b_tower],'red_tower': [r_tower],
             'blue_inhibitor': [b_in],'red_inhibitor': [r_in],
             'b_RIF': [blue_rift],'r_RIF': [red_rift], 'b_BAR': [blue_baron],'r_BAR': [red_baron],
-            'b_AIR':[blue_air] ,'r_AIR':[red_air] ,
-            'b_EAR':[blue_earth] ,'r_EAR':[red_earth] ,
-            'b_FIRE':[blue_fire] ,'r_FIRE':[red_fire] ,
-            'b_WAT':[blue_water] ,'r_WAT':[red_water] ,
-            'b_ELD':[blue_elder] ,'r_ELD':[red_elder] }
+            'b_AIR':[blue_air],'r_AIR':[red_air],
+            'b_EAR':[blue_earth],'r_EAR':[red_earth],
+            'b_FIRE':[blue_fire],'r_FIRE':[red_fire],
+            'b_WAT':[blue_water],'r_WAT':[red_water],
+            'b_ELD':[blue_elder],'r_ELD':[red_elder] }
     df = pd.DataFrame(data)
     
     scaler = StandardScaler()
     df_scaled = scaler.fit_transform(df)
     
     if team_colour == 'blue':
-        percent = f"{round(model.predict_proba(df_scaled)[0][1],3) * 100}%"
+        percent = f"{round(model.predict_proba(df_scaled)[0][0], 3) * 100}%"
     else:
-        percent = f"{round(model.predict_proba(df_scaled)[0][0],3) * 100}%"
+        percent = f"{round(model.predict_proba(df_scaled)[0][1], 3) * 100}%"
     return render_template('result.html', predict=percent)
 
 @app.route('/full')
@@ -109,20 +109,20 @@ def full_predict():
             'blue_firstInhibitor': [first_in], 'blue_firstBaron': [first_baron],
             'blue_firstDragon': [first_dragon], 'blue_firstRiftHerald': [first_rift],
             'b_RIF': [blue_rift],'r_RIF': [red_rift], 'b_BAR': [blue_baron],'r_BAR': [red_baron],
-            'b_AIR':[blue_air] ,'r_AIR':[red_air] ,
-            'b_EAR':[blue_earth] ,'r_EAR':[red_earth] ,
-            'b_FIRE':[blue_fire] ,'r_FIRE':[red_fire] ,
-            'b_WAT':[blue_water] ,'r_WAT':[red_water] ,
-            'b_ELD':[blue_elder] ,'r_ELD':[red_elder] }
+            'b_AIR':[blue_air],'r_AIR':[red_air],
+            'b_EAR':[blue_earth],'r_EAR':[red_earth],
+            'b_FIRE':[blue_fire],'r_FIRE':[red_fire],
+            'b_WAT':[blue_water],'r_WAT':[red_water],
+            'b_ELD':[blue_elder],'r_ELD':[red_elder] }
     df = pd.DataFrame(data)
     
     scaler = StandardScaler()
     df_scaled = scaler.fit_transform(df)
     
     if team_colour == 'blue':
-        percent = f"{round(model.predict_proba(df_scaled)[0][1], 3) * 100}%"
-    else:
         percent = f"{round(model.predict_proba(df_scaled)[0][0], 3) * 100}%"
+    else:
+        percent = f"{round(model.predict_proba(df_scaled)[0][1], 3) * 100}%"
     return render_template('result.html', predict=percent)
 
 
