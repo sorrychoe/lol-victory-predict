@@ -1,8 +1,6 @@
 import joblib
 
-import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
 from config.data import load_full_data, load_15m_data
